@@ -1,5 +1,5 @@
 <?php
-	include("connect.php"); // MySQL bağlantısını al.
+	include("connect.php"); // MySQL baÄŸlantÄ±sÄ±nÄ± al.
 ?>
 <!DOCTYPE HTML5>
 <head>
@@ -9,12 +9,12 @@
 	<?php
 	
 	/*
-	------------ MySQL Bağlantısı -----------
+	------------ MySQL BaÄŸlantÄ±sÄ± -----------
 	- daha fazla bilgi connect.php'de var. -
 	-----------------------------------------
 	*/
-	// MySQL Bağlantısı Var Mı?
-	echo '<p>Mysql Bağlantısı : </p>';
+	// MySQL BaÄŸlantÄ±sÄ± Var MÄ±?
+	echo '<p>Mysql BaÄŸlantÄ±sÄ± : </p>';
 	switch($connection){
 		case 1:
 		echo '<p style="color:green;">Var</p>';
@@ -23,21 +23,21 @@
 		echo '<p style="color:red;">Yok</p>';
 		break;
 		default:
-		echo '<p style="fcolor:gray">Bağlantı Yapılandırılamadı.</p>';
+		echo '<p style="fcolor:gray">BaÄŸlantÄ± YapÄ±landÄ±rÄ±lamadÄ±.</p>';
 	}
 	echo "<br/>";
 	
 	/*
 	------------ PDO MySQL SELECT -----------
-		- veritabanından veri seçmek. -
-		Değişkenler : 
+		- veritabanÄ±ndan veri seÃ§mek. -
+		DeÄŸiÅŸkenler : 
 		$connect = connect.php'den
 	-----------------------------------------
 	*/
 	
 	$id = $_POST['id']; // id'yi post verisinden al
-	$select = $connect->query("select * from table where id = 'id' "); // Tablodan verileri çek
-	$select->execute(array( 'id' => $id )); // id değerini belirle
+	$select = $connect->query("select * from table where id = 'id' "); // Tablodan verileri Ã§ek
+	$select->execute(array( 'id' => $id )); // id deÄŸerini belirle
 	if($select -> rowCount()){ // Veri bulundu mu?
 		$row = $select->fetch(PDO::FETCH_ASSOC); // Verileri diziye aktar
 	}
@@ -46,8 +46,8 @@
 	}
 	/*
 	------------ PDO MySQL INSERT -----------
-		- veritabanından veri seçmek. -
-		Değişkenler : 
+		- veritabanÄ±na veri eklemek. -
+		DeÄŸiÅŸkenler : 
 		$connect = connect.php'den
 	-----------------------------------------
 	*/
@@ -55,7 +55,7 @@
 	$id = $_POST['id']; // id'yi post verisinden al
 	$insert = $connect->prepare("insert into tablo (id) values ( 'id' )"); // tabloya ekle
 	$insert->execute(array( "id" => $id)); // id'yi belirle
-	if(!$insert){ // İşlem gerçekleşti mi?
+	if(!$insert){ // Ä°ÅŸlem gerÃ§ekleÅŸti mi?
 		$insert->errorInfo();
 	}
 	?>
